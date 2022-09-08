@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom';
 import { useParams } from 'react-router'
 import axios from 'axios';
+import Loader from '../../components/loader/Loader';
+
+interface Iresult {
+    strMeal: string
+    strMealThumb: string
+}
 
 const Result = () => {
     const baseUrl = "https://www.themealdb.com/api/json/v1/1";
@@ -31,8 +37,9 @@ const Result = () => {
     <div className='container-internal'>
         <h2 className='text-4xl pb-10'>{category}</h2>
         <div className='grid md:grid-cols-4 grid-cols-2 gap-4 pt-10 border-t'>
+        {loading && <Loader/>}
         {!!state && state.length > 0  &&
-            state.map((i: any) => (
+            state.map((i: Iresult) => (
                 // <Link to={{pathname:`/detail/${i.idMeal}`}}>
                     <div className='relative w-full'>
                         <img src={i.strMealThumb} width={'100%'} className='object-cover rounded-2xl' />

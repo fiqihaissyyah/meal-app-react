@@ -3,6 +3,11 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../../components/loader/Loader';
 
+interface Icategory {
+    strCategory: string
+    strCategoryThumb: string
+}
+
 const Category = () => {
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState([]);
@@ -34,7 +39,7 @@ const Category = () => {
         <div className='grid md:grid-cols-4 grid-cols-2 gap-4 pt-10 container-internal'>
             {loading && <Loader/>}
             {!!state && state.length > 0 &&
-                state.map((i: any) => (
+                state.map((i: Icategory) => (
                     <Link to={{pathname:`/result/${i.strCategory}`}}>
                         <div className='relative w-full max-h-[100px]'>
                             <img src={i.strCategoryThumb} width={'100%'} height={'100px'} className='object-cover img-home' />
