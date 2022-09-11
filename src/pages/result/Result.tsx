@@ -7,6 +7,7 @@ import Loader from '../../components/loader/Loader';
 interface Iresult {
     strMeal: string
     strMealThumb: string
+    idMeal: number
 }
 
 const Result = () => {
@@ -40,12 +41,12 @@ const Result = () => {
         {loading && <Loader/>}
         {!!state && state.length > 0  &&
             state.map((i: Iresult) => (
-                // <Link to={{pathname:`/detail/${i.idMeal}`}}>
+                <Link to={{pathname:`/detail/${i.idMeal}`}}>
                     <div className='relative w-full'>
                         <img src={i.strMealThumb} width={'100%'} className='object-cover rounded-2xl' />
                         <span className='overlay flex justify-center items-center text-white font-semibold md:text-lg text-sm'>{i.strMeal}</span>
                     </div>
-                // </Link>
+                </Link>
             ))
         }
         </div>

@@ -3,29 +3,20 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav>
-        <ul className="flex justify-between h-14 items-center text-base border-b">
-                <li>
-                    <a href='#' className='font-bold text-lg'>mealapp</a>
-                </li>
-            <div className='flex'>
+    <nav className='flex justify-between border-b items-center'>
+        <div className='font-bold text-lg'>mealapp</div>
+        <ul className="md:flex md:h-14 md:items-center items-start text-base ">
                 <Link to={'/'}>
-                    <li className='px-7'>
+                    <li className='md:px-7 py-2'>
                         <a href='#'> Home </a>
                     </li>
                 </Link>
-                <li className='px-7'>
-                    <a href='#'> Foods </a>
-                </li>
-                <li className='px-7'>
-                    <a href='#'> Ingredients </a>
-                </li>
-                <li>
-                    <a href='#'> Local Culinary </a>
-                </li>
-            </div>
+                <Link to={'/foods'}>
+                    <li className='md:px-7 py-2'>
+                        <a href='#'> Foods </a>
+                    </li>
+                </Link>
         </ul>
-        
     </nav>
   )
 }
